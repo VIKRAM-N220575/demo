@@ -1,0 +1,11 @@
+name: Basic CI Test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "CI is running successfully 🚀"
