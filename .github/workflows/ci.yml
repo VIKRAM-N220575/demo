@@ -1,11 +1,23 @@
-name: Basic CI Test
+name: HTML Validation CI
 
 on:
   push:
 
 jobs:
-  test:
+  validate-html:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Say Hello
-        run: echo "CI is running successfully 🚀"
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install HTMLHint
+      run: npm install -g htmlhint
+
+    - name: Run HTML validation
+      run: htmlhint index.html
